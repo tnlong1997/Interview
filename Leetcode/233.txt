@@ -1,0 +1,63 @@
+Given an integer n, count the total number of digit 1 appearing
+in all non-negative integers less than or equal to n.
+
+For example:
+Given n = 13,
+Return 6, because digit 1 occurred in the following numbers:
+1, 10, 11, 12, 13.
+
+class Solution:
+    def __init__(self):
+        self.f = [-1]*(200+1)
+        for i in range(0, 200+1):
+            self.f[i] = [-1]*11
+            for j in range(0,11):
+                self.f[i][j] = [-1]*3
+                for k in range(0,3):
+                    self.f[i][j][k] = [-1]*200
+
+        self.number = []
+
+    def count(self, i, n, k, eq, nOne):
+        if (i == n):
+            return nOne
+
+        if (self.f[i][k][eq][nOne] > -1):
+            return self.f[i][k][eq][nOne]
+
+        sum = 0
+
+        start = 0
+
+        for index in range(start, 10):
+            if (index == 1):
+                tOne = 1
+            else:
+                tOne = 0
+            if (not eq):
+                sum = sum + self.count(i+1, n, index, False, nOne+tOne)
+            elif (index < self.number[i]):
+                sum = sum + self.count(i+1, n, index, False, nOne+tOne)
+            elif (index == self.number[i]):
+                sum = sum + self.count(i+1, n, index, True, nOne+tOne)
+
+        self.f[i][k][eq][nOne] = sum
+        return sum
+
+
+    def countDigitOne(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if (n < 1):
+            return 0
+        ndigits = 0
+
+        while (n > 0):
+            self.number = [n%10] + self.number
+            n = n//10
+            ndigits += 1
+
+        return self.count(0, ndigits, 0, True, False)
+        
