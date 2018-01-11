@@ -1,0 +1,16 @@
+
+Google Interview 2 (10-1-18)
+
+Compare text part of two DOM trees.
+For example, these two are equivalent:
+  <html><p>He</p><p>ll</p><p>o</p></html>
+  <html><p><b>H</b>ello</p></html>
+
+  class Node:
+    	def __init__(self, tag, text):
+      		self.tag = tag # tag is not None for tag node
+      		self.text = text # text is None for tag node
+      		self.children = []
+
+Follow-ups: Why the solution will crash with big tree?
+Follow-ups: How can you fix it?

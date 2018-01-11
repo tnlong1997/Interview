@@ -1,0 +1,17 @@
+
+Google Interview 1 (10-1-18)
+
+Question 1: input string consisting of only “(” “)”.
+Return value: bool: if the parenthesis string is valid
+or not.
+Examples: “((())())” -> true
+          “())” -> false
+
+
+Question 2: input string: “(” “)” “{” “}” “[” “]”
+Return value: bool: if the parenthesis string is valid
+or not.
+
+Question 3: string with “(” and “)”
+Return: the longest length of valid parenthesis string
+Examples: “(()” -> 2
