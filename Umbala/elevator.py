@@ -56,6 +56,7 @@ class Request:
     def __init__(self, index, curr_floor, dest_floor):
         self.curr_floor = curr_floor
         self.dest_floor = dest_floor
+        self.index = index
 
     def getCurrentFloor(self):
         return self.curr_floor
@@ -104,28 +105,24 @@ def find_elevator(curr, dest):
 
 
 def simulator():
-    inp = input("Enter number of floors: ")
-    n = int(inp)
-    inp = input("Enter number of elevators: ")
-    m = int(inp)
-
-    elevators = []
 
     for i in range(0, m):
-        elevators = elevators.append(Elevator(i, 0, 0))
+        elevators.append(Elevator(i, 0, 0, 0))
 
     time = 0
     requests = []
-    inp = input("Enter action at time %d" % time)
-    while (inp != "End"):
-        curr, dest = inp.split(" ", 2)
+    print("Enter action at time %d" % time)
+    curr = input("Enter current floor: ")
+    dest = input("Enter destination floor: ")
+    # inp = input("Enter action at time %d: " % time)
+    while (curr != "end"):
         curr = int(curr)
         dest = int(dest)
-        requests.append(Request(Request(time, curr, dest)))
+        requests.append(Request(time, curr, dest))
 
         for request in requests:
             found, elevator_index = find_elevator(request.getCurrentFloor(), request.getDestination())
-            elevators[elevator_index].updateDestination()
+            elevators[elevator_index].updateDestination(request.curr_floor)
             if found:
                 print("Request %d requests elevator %d" % (request.getIndex(), elevator_index))
                 requests.remove(request)
@@ -133,6 +130,14 @@ def simulator():
         for i in range(0, m):
             elevators[i].update()
 
+        curr = input("Enter current floor: ")
+        dest = input("Enter destination floor: ")
+
+
+inp = input("Enter number of floors: ")
+n = int(inp)
+inp = input("Enter number of elevators: ")
+m = int(inp)
 
 elevators = []
 simulator()
