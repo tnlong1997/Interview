@@ -1,0 +1,20 @@
+
+Umbala 08-01-18
+
+Question 1:
+Write an application to simulate elevators in a building.
+Let say, one building has N floors and M elevators.
+Each floor can request elevator to go to another floor.
+Make sure that your output (console log, any GUI or activity) can show that
+elevators can receive requests and process to respond to those requests.
+How do you design a system like that? How do you handle concurrency to
+make sure elevators are running parallel?
+
+Question 2:
+You have an image as NxN matrix of pixel (each is number).
+Write a program to rotate 90 degree that image.
+Can you do that in place without using any temporary matrix?
+
+Question 3:
+Write an application, that allows people to log in to their instagram account,
+list all their following and includes one button to unfollow all current following.
