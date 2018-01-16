@@ -1,0 +1,32 @@
+https://www.hackerrank.com/challenges/countingsort2/problem
+
+#!/bin/python3
+
+import sys
+
+def countingSort(arr):
+    # Complete this function
+
+    memo = {}
+    sorted = []
+    for i in arr:
+        t = memo.get(i)
+        if t is None:
+            memo[i] = 1
+        else:
+            memo[i] += 1
+
+    for i in range(0, 100):
+        t = memo.get(i)
+        if t is not None:
+            for j in range(0, t):
+                sorted.append(i)
+
+    return sorted
+
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    arr = list(map(int, input().strip().split(' ')))
+    result = countingSort(arr)
+    print (" ".join(map(str, result)))
