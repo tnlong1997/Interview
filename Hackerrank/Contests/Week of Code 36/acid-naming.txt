@@ -1,0 +1,23 @@
+https://www.hackerrank.com/contests/w36/challenges/acid-naming
+
+import sys
+
+def acidNaming(acid_name):
+    # Complete this function
+    n = len(acid_name)
+    if len(acid_name) < 2:
+        return "not an acid"
+    if acid_name[n-2:n] != "ic":
+        return "not an acid"
+    if n < 5:
+        return "polyatomic acid"
+    if acid_name[0:5] == "hydro":
+        return "non-metal acid"
+    return "polyatomic acid"
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    for a0 in range(n):
+        acid_name = input().strip()
+        result = acidNaming(acid_name)
+        print(result)
