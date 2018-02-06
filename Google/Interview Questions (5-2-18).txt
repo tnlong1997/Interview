@@ -1,0 +1,44 @@
+
+
+Question 1:
+Given a CamelCase input string, output a snake_case conversion of this same string.
+
+Example:
+HelloWorld -> hello_world
+LongerCamelCaseString -> longer_camel_case_string
+
+Follow-up: Write unit test
+
+
+Question 2:
+Given 2 sorted lists of integers, find the median of all values
+
+[1,2,3], [4,5,6] -> 3
+[1,5,6], [2,3,4] -> 3
+
+Follow-up: Write unit test
+
+
+Question 3:
+
+Using encrypting method ROTN (ROT1, ROT2, ROT3, ...)
+
+ROT13
+value:  abcdefghijklmnopqrstuvwxyz
+key:    nopqrstuvwxyzabcdefghijklm
+
+hello -> uryyb -> hello
+
+ROT2
+value:  abcdefghijklmnopqrstuvwxyz
+key:    cdefghijklmnopqrstuvwxyzab
+
+hello -> jgnnq
+
+
+Given a set of input string, group these strings into sets of ROTN equivalence
+
+input: [hello, goodbye, jgnnq, uryyb, hi, jk]
+output: [[hello, jgnnq, uryyb], [goodbye], [hi, jk]]
+
+Follow-up: Write unit test
