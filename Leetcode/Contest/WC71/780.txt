@@ -1,0 +1,36 @@
+https://leetcode.com/contest/weekly-contest-71/problems/reaching-points/
+
+class Solution:
+    def reachingPoints(self, sx, sy, tx, ty):
+        """
+        :type sx: int
+        :type sy: int
+        :type tx: int
+        :type ty: int
+        :rtype: bool
+        """
+        while 1:
+            # print(tx, ty)
+            if (sx == tx and sy == ty):
+                return True
+            if (sx > tx or sy > ty):
+                return False
+            if (tx == ty):
+                return False
+            if (tx > ty):
+                if (tx // ty == 1):
+                    tx = tx - ty
+                elif (tx < ty + sx):
+                    tx = tx - ty
+                else:
+                    t = (tx - max(ty, sx)) // ty
+                    tx = tx - ty*t
+            else:
+                if (ty // tx == 1):
+                    ty = ty - tx
+                elif (ty < tx + sy):
+                    ty = ty - tx
+                else:
+                    t = (ty - max(tx, sy)) // tx
+                    ty= ty - tx*t
+        return False

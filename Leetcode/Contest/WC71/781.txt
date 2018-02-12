@@ -1,0 +1,23 @@
+https://leetcode.com/contest/weekly-contest-71/problems/rabbits-in-forest/
+
+class Solution:
+    def numRabbits(self, answers):
+        """
+        :type answers: List[int]
+        :rtype: int
+        """
+        d = {}
+        for answer in answers:
+            if (answer in d):
+                d[answer] += 1
+            else:
+                d[answer] = 1
+        res = 0
+        for i in range(0, 1000):
+            if (i in d):
+                t = d[i] // (i+1)
+                if ((d[i] % (i+1)) == 0):
+                    res = res + t * (i+1)
+                else:
+                    res = res + (t+1) * (i+1)
+        return res 
