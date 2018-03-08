@@ -1,0 +1,9 @@
+
+03/08/2018
+
+Question 1:
+Given array A[m x n]
+Return array B[m x n] with B[i][j] = sum(A[t][k]) with 1 <= t <= i, 1 <= k <= j
+
+Question 2:
+Given array A of n integers, find a maximum subarray sum.
