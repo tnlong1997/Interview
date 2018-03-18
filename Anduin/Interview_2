@@ -1,0 +1,14 @@
+
+Question 1:
+Write function rand(n) returns a random number x where 1 <= x <= n and x is
+uniformly distributed
+
+Prove x is uniformly distributed
+
+Question 2:
+Generate a random sequence of k integers such that the sum of k integers is n
+Sequence must be uniformly distributed
+
+Hint using rand() function above
+
+Prove why the sequence is uniformly distributed
