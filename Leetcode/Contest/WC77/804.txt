@@ -1,0 +1,32 @@
+https://leetcode.com/contest/weekly-contest-77/problems/unique-morse-code-words/
+
+class Solution:
+    def uniqueMorseRepresentations(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+
+        n = len(words)
+        trans = []
+
+        for j in range(0, len(words)):
+            word = words[j]
+            t = ""
+            for i in range(0, len(word)):
+                t = t + morse[ord(word[i]) - 97]
+            trans.append(t)
+
+        visit = [False] * (n + 15)
+        res = 0
+
+        print(trans)
+
+        for i in range(0, len(trans)):
+            if (not visit[i]):
+                res += 1
+                for j in range(i + 1, len(trans)):
+                    if (trans[i] == trans[j]):
+                       visit[j] = True
+        return(res)
