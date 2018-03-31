@@ -1,0 +1,36 @@
+https://leetcode.com/contest/weekly-contest-77/problems/max-increase-to-keep-city-skyline/
+
+class Solution:
+    def maxIncreaseKeepingSkyline(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+
+        top_view = []
+        left_view = []
+
+        m = len(grid)
+        n = len(grid[0])
+        res = 0
+
+        for i in range(0, m):
+            t = 0
+            for j in range(0, n):
+                if (grid[i][j] > t):
+                    t = grid[i][j]
+            left_view.append(t)
+
+        for j in range(0, n):
+            t = 0
+            for i in range(0, m):
+                if (grid[i][j] > t):
+                    t = grid[i][j]
+            top_view.append(t)
+
+        print(top_view, left_view)
+
+        for i in range(0, m):
+            for j in range(0, n):
+                res += min(max(0, top_view[j] - grid[i][j]), max(0, left_view[i] - grid[i][j]))
+        return res
