@@ -1,0 +1,21 @@
+https://leetcode.com/contest/weekly-contest-77/problems/number-of-lines-to-write-string/
+
+class Solution:
+    def numberOfLines(self, widths, S):
+        """
+        :type widths: List[int]
+        :type S: str
+        :rtype: List[int]
+        """
+        i = 0
+        res = 0
+        n = 100
+        while (i < len(S)):
+            if (i < len(S) and n >= widths[ord(S[i]) - 97]):
+                n = n - widths[ord(S[i]) - 97]
+                i += 1
+            elif (i < len(S)):
+                res += 1
+                n = 100
+
+        return([res + 1, 100 - n])
