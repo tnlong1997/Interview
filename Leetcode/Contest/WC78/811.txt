@@ -1,0 +1,27 @@
+class Solution:
+    def subdomainVisits(self, cpdomains):
+        """
+        :type cpdomains: List[str]
+        :rtype: List[str]
+        """
+        res = {}
+        r = []
+        for cpdomain in cpdomains:
+            number = cpdomain.split(" ")[0]
+            domain = cpdomain.split(" ")[1]
+            domains = domain.split(".")
+            t = ""
+            for i in range(len(domains) - 1, -1, -1):
+                if (i != len(domains) - 1):
+                    t = domains[i] + '.' + t
+                else:
+                    t = domains[i]
+                if (t in res):
+                    res[t] = res[t] + int(number)
+                else:
+                    res[t] = int(number)
+        for key in res.keys():
+            t = "%d %s" % (res[key], key)
+            r.append(t)
+
+        return r
