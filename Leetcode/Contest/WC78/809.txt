@@ -1,0 +1,45 @@
+https://leetcode.com/contest/weekly-contest-78/problems/expressive-words/
+
+class Solution:
+    def expressiveWords(self, S, words):
+        """
+        :type S: str
+        :type words: List[str]
+        :rtype: int
+        """
+
+        def count(word):
+            res1 = []
+            res2 = []
+            res1.append(word[0])
+            res2.append(1)
+            index = 0
+            for i in range(1, len(word)):
+                if (word[i] == word[i-1]):
+                    res2[index] += 1
+                else:
+                    res1.append(word[i])
+                    res2.append(1)
+                    index += 1
+            return res1, res2
+
+        def check(word):
+            g1, f1 = count(word)
+            g2, f2 = count(S)
+            if (len(g1) != len(g2)):
+                return False
+            for i in range(0, len(g1)):
+                if (g1[i] != g2[i]):
+                    return False
+                if (f1[i] > f2[i]):
+                    return False
+                if (f2[i] == 2 and f1[i] < f2[i]):
+                    return False
+            return True
+
+        res = 0
+        for word in words:
+            if check(word):
+                res += 1
+
+        return res
